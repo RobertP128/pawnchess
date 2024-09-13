@@ -16,14 +16,14 @@ public class UserInput {
     private Board board;
     private IConfig config;
 
-    public UserInput(InputStream inStream, PrintStream outStream,Board board,MoveValidator moveValidator,IConfig config){
+    public UserInput(InputStream inStream, PrintStream outStream,Board board,MoveValidator moveValidator,IConfig config,Scanner extScanner){
         this.inStream=inStream;
         this.outStream=outStream;
         this.moveValidator=moveValidator;
         this.board=board;
         this.config=config;
 
-        scanner=new Scanner(this.inStream);
+        scanner=(extScanner==null) ?  new Scanner(this.inStream) : extScanner;
     }
 
     public PrintStream getOutStream(){
