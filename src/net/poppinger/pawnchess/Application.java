@@ -21,26 +21,12 @@ public class Application {
         this.player1Input=player1Input;
         this.player2Input=player2Input;
         this.config=config;
-        initBoard();
-    }
-
-
-    private void initBoard(){
         currentPlayer=Player.ONE;
-        for (int y=0;y<config.getHEIGHT();y++){
-            for (int x=0;x<config.getWIDTH();x++){
-                if (y==0){
-                    board.getBoard()[y][x] = config.getFIGURE_PAWN_BLACK();
-                }
-                else if (y==config.getHEIGHT()-1){
-                    board.getBoard()[y][x] = config.getFIGURE_PAWN_WHITE();
-                }
-                else {
-                    board.getBoard()[y][x] = config.getFIGURE_EMPTY();
-                }
-            }
-        }
+        board.initBoard();
     }
+
+
+
 
     private Player getInversCurrentPlayer(){
         return (currentPlayer==Player.ONE) ? Player.TWO : Player.ONE;

@@ -38,4 +38,22 @@ public class Board {
         if (!foundPlayer1 && foundPlayer2) return Player.TWO;
         return null;
     }
+
+    public void initBoard(){
+
+        for (int y=0;y<config.getHEIGHT();y++){
+            for (int x=0;x<config.getWIDTH();x++){
+                if (y==0){
+                    board[y][x] = config.getFIGURE_PAWN_BLACK();
+                }
+                else if (y==config.getHEIGHT()-1){
+                    board[y][x] = config.getFIGURE_PAWN_WHITE();
+                }
+                else {
+                    board[y][x] = config.getFIGURE_EMPTY();
+                }
+            }
+        }
+    }
+
 }
