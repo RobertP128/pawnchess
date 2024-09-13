@@ -1,6 +1,5 @@
 import net.poppinger.pawnchess.*;
 
-import java.io.InputStream;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.util.Scanner;
@@ -13,15 +12,15 @@ public class Main {
 
         ServerSocket server = new ServerSocket(2048);
 
-        var sockerPlayer1=server.accept();
-        var is1=sockerPlayer1.getInputStream();
-        var os1 = new PrintStream(sockerPlayer1.getOutputStream());
-        os1.println("Hello. You are Plyer ONE. Waiting for Player Two......");
+        var socketPlayer1=server.accept();
+        var is1=socketPlayer1.getInputStream();
+        var os1 = new PrintStream(socketPlayer1.getOutputStream());
+        os1.println("Hello. You are Player ONE. Waiting for Player Two......");
 
-        var sockerPlayer2=server.accept();
-        var is2=sockerPlayer2.getInputStream();
-        var os2 = new PrintStream(sockerPlayer2.getOutputStream());
-        os2.println("Hello. You are Plyer TWO. Player ONE has already joined. Lets Go");
+        var socketPlayer2=server.accept();
+        var is2=socketPlayer2.getInputStream();
+        var os2 = new PrintStream(socketPlayer2.getOutputStream());
+        os2.println("Hello. You are Player TWO. Player ONE has already joined. Lets Go");
 
 
 /*
@@ -36,10 +35,10 @@ public class Main {
         Board board=new Board(config);
         MoveValidator mv=new MoveValidator(config);
 
-        var p1intput = new UserInput(is1,os1,board,mv,config,scanner);
-        var p2intput = new UserInput(is2,os2,board,mv,config,scanner);
+        var p1input = new UserInput(is1,os1,board,mv,config,scanner);
+        var p2input = new UserInput(is2,os2,board,mv,config,scanner);
 
-        Application app=new Application(p1intput,p2intput,board,config);
+        Application app=new Application(p1input,p2input,board,config);
         //app.printBoard();
         app.run();
 
